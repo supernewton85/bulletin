@@ -33,7 +33,7 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB 연결 설정
-const url = process.env.MONGO_URL;;
+const url = process.env.MONGO_URL;n;
 console.log('MongoDB URL:', url);
 const dbName = 'Cluster0'; // 여기에 실제 데이터베이스 이름을 입력하세요
 
