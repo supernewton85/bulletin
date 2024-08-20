@@ -33,7 +33,7 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB 연결 설정
-const url = process.env.MONGO_URL;
+const url = process.env.MONGO_URL || 'mongodb+srv://supernewto:chltjddnr1@bull.te7td.mongodb.net/?retryWrites=true&w=majority&appName=BULL';
 const dbName = 'bulletinboard';
 let db;
 
