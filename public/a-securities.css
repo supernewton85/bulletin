@@ -1,0 +1,252 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.board {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.add-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#marketViewTable, #issueSalesTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#marketViewTable th, #marketViewTable td,
+#issueSalesTable th, #issueSalesTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#marketViewTable th, #issueSalesTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#marketViewTable tr:nth-child(even),
+#issueSalesTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#marketViewTable tr:hover,
+#issueSalesTable tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.content-column {
+    width: 60%;
+}
+
+.author-column {
+    width: 20%;
+}
+
+.timestamp-column {
+    width: 20%;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    width: 80%;
+    max-width: 500px;
+}
+
+.modal textarea, .modal input[type="text"], .modal input[type="password"], .modal select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal button:last-child {
+    margin-right: 0;
+}
+
+#charCount {
+    font-size: 12px;
+    color: #555;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#issueSalesTable .status-관심 {
+    background-color: yellow;
+}
+
+#issueSalesTable .status-발행중 {
+    background-color: green;
+    color: white;
+}
+
+#issueSalesPopup {
+    width: 300px;
+}
+
+#issueSalesPopup .form-group {
+    margin-bottom: 15px;
+}
+
+#issueSalesPopup label {
+    display: inline-block;
+    width: 80px;
+    margin-right: 10px;
+}
+
+#issueSalesPopup input {
+    width: 180px;
+    padding: 5px;
+}
+
+#issueSalesPopup .button-group {
+    text-align: right;
+}
+
+#selectedIssueSalesInfo {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 5px;
+    }
+
+    .board {
+        padding: 10px;
+        height: auto;
+        max-height: 70vh;
+    }
+
+    #marketViewTable, #issueSalesTable {
+        font-size: 12px;
+    }
+
+    #marketViewTable th, #marketViewTable td,
+    #issueSalesTable th, #issueSalesTable td {
+        padding: 8px;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .modal textarea, .modal input[type="text"], .modal input[type="password"], .modal select {
+        padding: 8px;
+    }
+
+    .modal button {
+        padding: 8px 16px;
+    }
+
+    #issueSalesPopup {
+        width: 90%;
+    }
+
+    #issueSalesPopup label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    #issueSalesPopup input {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .add-button {
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+    }
+
+    #marketViewTable, #issueSalesTable {
+        font-size: 10px;
+    }
+
+    #marketViewTable th, #marketViewTable td,
+    #issueSalesTable th, #issueSalesTable td {
+        padding: 6px;
+    }
+}

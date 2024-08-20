@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campfire</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Campfire</h1>
+        
+        <div id="quickMarketBoard" class="board">
+            <h2>Quick Market</h2>
+            <button id="addButton1" class="add-button">+</button>
+            <table id="quickMarketTable">
+                <thead>
+                    <tr>
+                        <th class="content-column">내용</th>
+                        <th class="author-column">작성자</th>
+                        <th class="timestamp-column">작성일시</th>
+                    </tr>
+                </thead>
+                <tbody id="quickMarketBody"></tbody>
+            </table>
+        </div>
+
+        <div id="issueNewsBoard" class="board">
+            <h2>Issue News</h2>
+            <button id="addButton2" class="add-button">+</button>
+            <table id="issueNewsTable">
+                <thead>
+                    <tr>
+                        <th>발행사</th>
+                        <th>만기</th>
+                        <th>발행(관심)금리</th>
+                        <th>전일 민평</th>
+                        <th>예상 Spread</th>
+                        <th>발행량</th>
+                        <th>상태</th>
+                        <th>Update 시간</th>
+                    </tr>
+                </thead>
+                <tbody id="issueNewsBody"></tbody>
+            </table>
+        </div>
+
+        <div class="bottom-section">
+            <div id="pollSection" class="half-width">
+                <h2>Poll</h2>
+                <div id="poll1" class="poll"></div>
+                <div id="poll2" class="poll"></div>
+            </div>
+
+            <div id="brokerSection" class="half-width">
+                <h2>Broker's Room</h2>
+                <div class="broker-links"></div>
+            </div>
+        </div>
+
+        <button id="adminButton">Admin Page</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <h2>새 게시물 작성</h2>
+        <textarea id="postContent" rows="10" cols="50"></textarea>
+        <input type="text" id="author" placeholder="작성자">
+        <input type="password" id="postPassword" placeholder="비밀번호">
+        <div id="charCount"></div>
+        <button id="saveButton">저장 (Ctrl+Enter)</button>
+        <button id="closeModalButton">닫기</button>
+    </div>
+
+    <div id="issueNewsModal" class="modal">
+        <h2>Issue News 작성/수정</h2>
+        <input type="text" id="issuer" placeholder="발행사">
+        <input type="text" id="maturity" placeholder="만기">
+        <input type="text" id="issueRate" placeholder="발행(관심)금리">
+        <input type="text" id="prevRate" placeholder="전일 민평">
+        <input type="text" id="expectedSpread" placeholder="예상 Spread">
+        <input type="text" id="issueAmount" placeholder="발행량">
+        <select id="status">
+            <option value="관심">관심</option>
+            <option value="발행중">발행중</option>
+            <option value="마감">마감</option>
+        </select>
+        <input type="password" id="issueNewsPassword" placeholder="비밀번호">
+        <button id="saveIssueNewsButton">저장</button>
+        <button id="deleteIssueNewsButton">삭제</button>
+        <button id="closeIssueNewsModalButton">닫기</button>
+    </div>
+
+    <div id="fullPostModal" class="modal">
+        <div class="modal-content">
+            <h2 id="fullPostTitle"></h2>
+            <div id="fullPostContent"></div>
+            <button id="editPostBtn">수정</button>
+            <button id="deletePostBtn">삭제</button>
+            <button id="closeFullPostModalBtn">닫기</button>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <h2>게시글 수정</h2>
+        <textarea id="editPostContent" rows="10" cols="50"></textarea>
+        <button id="saveEditBtn">저장</button>
+        <button id="closeEditModalBtn">닫기</button>
+    </div>
+
+    <div id="issueNewsPopup" class="modal">
+        <h3>Issue News 접수</h3>
+        <div id="selectedIssueNewsInfo"></div>
+        <div class="form-group">
+            <label for="brokerName">브로커 명:</label>
+            <input type="text" id="brokerName">
+        </div>
+        <div class="form-group">
+            <label for="quantity">수량:</label>
+            <input type="text" id="quantity">
+        </div>
+        <div class="form-group">
+            <label for="rate">금리:</label>
+            <input type="text" id="rate">
+        </div>
+        <div class="button-group">
+            <button id="submitIssueNews">접수</button>
+            <button id="closeIssueNewsPopup">닫기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
