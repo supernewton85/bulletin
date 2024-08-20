@@ -33,19 +33,18 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB 연결 설정
-const url = process.env.MONGO_URL || 'mongodb+srv://supernewto:chltjddnr1@bull.te7td.mongodb.net/?retryWrites=true&w=majority&appName=BULL';
-const dbName = 'bulletinboard';
-let db;
+const url = process.env.MONGODB_URI;
+const dbName = 'Cluster0'; // 여기에 실제 데이터베이스 이름을 입력하세요
 
 async function connectToDatabase() {
-    try {
-        const client = await MongoClient.connect(url);
-        logger.info('Connected to MongoDB');
-        db = client.db(dbName);
-    } catch (err) {
-        logger.error('Error connecting to MongoDB:', err);
-        process.exit(1);
-    }
+  try {
+    const client = await MongoClient.connect(url);
+    logger.info('Connected to MongoDB');
+    db = client.db(dbName);
+  } catch (err) {
+    logger.error('Error connecting to MongoDB:', err);
+    process.exit(1);
+  }
 }
 
 // 데이터베이스 연결 확인 미들웨어
