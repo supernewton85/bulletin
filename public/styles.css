@@ -129,6 +129,17 @@ th {
     background-color: #45a049; /* 버튼 hover 효과 */
 }
 
+/* Full Post Modal Styles */
+#fullPostModal .modal-content {
+    max-height: 80vh; /* 뷰포트 높이의 80%로 제한 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+}
+
+#fullPostContent {
+    white-space: pre-wrap; /* 줄바꿈과 공백을 유지 */
+    word-break: break-word; /* 긴 단어의 경우 줄바꿈 */
+}
+
 /* Poll and Brokers Room Styles */
 .bottom-section {
     display: flex;

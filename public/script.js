@@ -247,6 +247,10 @@ const dom = {
         popup.style.display = 'block';
     },
 
+    closeIssueNewsPopup() {
+        document.getElementById('issueNewsPopup').style.display = 'none';
+    },
+
     editIssueNews(issueNews) {
         const password = prompt('Enter password to edit:');
         if (password === issueNews.password || password === ADMIN_PASSWORD) {
@@ -565,12 +569,15 @@ const controller = {
             }
         });
 
+        // Issue News Popup 닫기 버튼에 이벤트 리스너 추가
+        document.querySelector('#issueNewsPopup .button-group button:last-child').addEventListener('click', () => dom.closeIssueNewsPopup());
+
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 dom.closeModal();
                 dom.closeIssueNewsModal();
                 document.getElementById('fullPostModal').style.display = 'none';
-                document.getElementById('issueNewsPopup').style.display = 'none';
+                dom.closeIssueNewsPopup(); // ESC 키로도 팝업을 닫을 수 있도록 추가
                 document.getElementById('editModal').style.display = 'none';
             }
             if (event.ctrlKey && event.key === 'Enter') {
