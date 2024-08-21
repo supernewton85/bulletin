@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -17,12 +18,21 @@ h1, h2 {
     color: #333;
 }
 
+/* Board Styles */
 .board {
     background: white;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 400px; /* 일정한 높이 설정 */
+    overflow-y: auto; /* 스크롤 기능 추가 */
+}
+
+/* Quick Market Overview Scroll */
+.quick-market-overview {
+    max-height: 600px; /* 적절한 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤 기능 추가 */
 }
 
 table {
@@ -40,6 +50,7 @@ th {
     background-color: #f2f2f2;
 }
 
+/* Add Button Styles */
 .add-button {
     float: right;
     background: #4CAF50;
@@ -50,24 +61,28 @@ th {
     cursor: pointer;
 }
 
+/* Modal Styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    display: none; /* 기본적으로 모달을 숨김 */
+    position: fixed; /* 화면에 고정 */
+    z-index: 1; /* 다른 요소들 위에 표시 */
+    left: 50%; /* 중앙에 위치하도록 설정 */
+    top: 50%; /* 중앙에 위치하도록 설정 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    width: 50%; /* 모달의 너비 설정 */
+    max-width: 600px; /* 모달의 최대 너비 */
+    background-color: #fefefe; /* 모달 배경색 */
+    padding: 20px; /* 내부 패딩 */
+    border-radius: 10px; /* 모서리를 둥글게 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    margin: 0; /* 여백 제거 */
+    padding: 20px; /* 내부 패딩 */
+    background-color: #ffffff; /* 배경색 */
+    border-radius: 10px; /* 모서리를 둥글게 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 .close {
@@ -84,50 +99,94 @@ th {
     cursor: pointer;
 }
 
-#adminButton {
-    display: block;
-    margin: 20px auto;
+.modal textarea, 
+.modal input[type="text"], 
+.modal input[type="password"], 
+.modal select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* 박스 크기를 설정하여 padding과 border가 포함되도록 */
+}
+
+.modal button {
+    margin-top: 10px;
     padding: 10px 20px;
     background-color: #4CAF50;
-    color: white;
+    color: #fff;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
+.modal button:last-child {
+    margin-right: 0;
+}
+
+.modal button:hover {
+    background-color: #45a049; /* 버튼 hover 효과 */
+}
+
+/* Poll and Brokers Room Styles */
 .bottom-section {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    align-items: stretch;
+    gap: 20px;
 }
 
 .half-width {
-    width: 48%;
+    width: calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
 }
 
-.poll {
+.poll, .broker-links {
     background: white;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex-grow: 1;
+}
+
+.poll {
+    height: auto;
+    max-height: none; /* 최대 높이 제한 제거 */
+    overflow-y: visible; /* 스크롤 제거 */
+}
+
+/* 차트 크기 조정 */
+.poll svg {
+    max-height: 200px; /* 차트의 최대 높이를 200px로 제한 */
+    width: 100%;
 }
 
 .broker-links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 버튼 사이의 간격 조정 */
 }
 
 .broker-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 8px 16px; /* 버튼 크기 약간 축소 */
+    margin: 0; /* 마진 제거 */
     background-color: #4CAF50;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
+.broker-button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .bottom-section {
         flex-direction: column;
@@ -135,5 +194,13 @@ th {
 
     .half-width {
         width: 100%;
+    }
+
+    .poll, .broker-links {
+        margin-bottom: 20px;
+    }
+
+    .modal {
+        width: 90%; /* 모바일에서 모달의 너비 확장 */
     }
 }
